@@ -4,27 +4,30 @@ class Estacionamento {
         this.tempos = tempos;
     }
 
-    calcular(valorInserido) {
-        let tempoTotal = 0;
-        let restante = valorInserido;
+calcular(valorInserido) {
+    let tempoTotal = 0;
+    let restante = valorInserido;
 
-        // Ordenar valores e tempos do maior para o menor
-        const opcoes = this.valores
-            .map((valor, i) => ({ valor, tempo: this.tempos[i] }))
-            .sort((a, b) => b.valor - a.valor);
+    const opcoes = this.valores
+        .map((valor, i) => ({ valor, tempo: this.tempos[i] }))
+        .sort((a, b) => b.valor - a.valor);
 
-        for (const opcao of opcoes) {
-            while (restante >= opcao.valor) {
-                restante -= opcao.valor;
-                tempoTotal += opcao.tempo;
-            }
+    for (const opcao of opcoes) {
+        while (restante >= opcao.valor && tempoTotal + opcao.tempo <= 120) {
+            restante -= opcao.valor;
+            tempoTotal += opcao.tempo;
         }
-
-        return {
-            tempo: tempoTotal,
-            troco: restante.toFixed(2)
-        };
+        // Se atigir 120 minutos o loop para
+        if (tempoTotal >= 120) {
+            break;
+        }
     }
+
+    return {
+        tempo: tempoTotal,
+        troco: restante.toFixed(2)
+    };
+}
 }
 
 function executarCalculo() {
