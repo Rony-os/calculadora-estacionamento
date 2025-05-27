@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tempo-Estacionamento</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
+</head>
+<body>
+    <h1>Calculadora de custos e tempo de estacionamento</h1>
+    
+    <main>
+
+        <label>valor(R$):</label>
+        <input id="valor1" type="number" value="5.00" min="0">
+        <input id="valor2" type="number" value="10.0" min="0">
+        <input id="valor3" type="number" value="15.0" min="0">
+        
+        <label>tempo(min):</label>
+        <input id="tempo1" type="number" value="30">
+        <input id="tempo2" type="number" value="60">
+        <input id="tempo3" type="number" value="120">
+        <br><br>
+
+        <!--Valor inserido usuario -->
+        <label for="valorUsuario">Inserir Valor(R$): </label>
+        <input id="valorUsuario" type="number" value="0.00" min="0">
+        <button onclick="executarCalculo()">Calcular</button>
+
+        <!-- tempo e troco -->
+        <p id="tempoResultado"></p>
+        <p id="trocoResultado"></p>
+    </main>
+</body>
+</html>
